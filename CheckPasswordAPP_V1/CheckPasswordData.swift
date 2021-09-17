@@ -7,6 +7,19 @@
 
 import Foundation
 
-enum PasswordCheck {
-    
-}
+
+let tenMostCommonPasswords = [
+    "123456",
+    "password",
+    "12345678",
+    "qwerty",
+    "12345",
+    "123456789",
+    "letmein",
+    "1234567",
+    "football",
+    "iloveyou"
+]
+
+let digits = "0123456789"
+let punctuation = "!@#$%^&*(),.<>;'`~[]{}\\|/?_-+= "
