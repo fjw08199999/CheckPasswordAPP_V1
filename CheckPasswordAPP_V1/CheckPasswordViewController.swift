@@ -134,9 +134,10 @@ class CheckPasswordViewController: UIViewController, UITextFieldDelegate {
     
     //點擊空白處收鍵盤
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.view.endEditing(true)
+        self.view.endEditing(true)
+        
     }
-
+    
     
     //Main.storyboard畫面
     @IBOutlet weak var userNameLabel: UILabel!
