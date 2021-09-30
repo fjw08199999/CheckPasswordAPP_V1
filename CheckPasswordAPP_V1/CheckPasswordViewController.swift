@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CheckPasswordViewController: UIViewController {
+class CheckPasswordViewController: UIViewController, UITextFieldDelegate {
     
     //檢查帳號是否為空值
     func checkaccountNil(userNameFieldText: String) {
@@ -132,6 +132,11 @@ class CheckPasswordViewController: UIViewController {
         
     }
     
+    //點擊空白處收鍵盤
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+    }
+
     
     //Main.storyboard畫面
     @IBOutlet weak var userNameLabel: UILabel!
@@ -233,6 +238,8 @@ class CheckPasswordViewController: UIViewController {
         
         //密碼創建成功
         checkregistrationSuccess(registrationSuccess: SystemMSG.registrationSuccess.rawValue)
+        
+        //收鍵盤
         
     }
     
