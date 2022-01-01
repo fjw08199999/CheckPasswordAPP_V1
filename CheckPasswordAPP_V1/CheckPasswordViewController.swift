@@ -12,35 +12,36 @@ class CheckPasswordViewController: UIViewController, UITextFieldDelegate {
     
     //檢查帳號是否為空值
     func checkaccountNil(userNameFieldText: String) {
-        if userNameFieldText.isEmpty == true {
+        guard userNameFieldText.isEmpty == false else { return
             errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.checkAccountNil.rawValue)
         }
     }
     
     //檢查密碼是否為空值
     func checkPasswordNil(passwordFieldText: String) {
-        if passwordFieldText.isEmpty == true {
+        guard passwordFieldText.isEmpty == false else { return
             errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.checkPasswordNil.rawValue)
         }
     }
     
     //檢查重複輸入密碼是否為空值
     func reCheckPasswordNil(repasswordFieldText: String) {
-        if repasswordFieldText.isEmpty == true {
+        guard repasswordFieldText.isEmpty == false else { return
             errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.reCheckPasswordNil.rawValue)
         }
     }
     
     //檢查密碼長度是否介於8~20字元
     func checkPasswordLong(passwordField: String) {
-        if passwordField.count < NumberMaxMin.minNumber.rawValue || passwordField.count > NumberMaxMin.maxNumber.rawValue {
+        guard passwordField.count > NumberMaxMin.minNumber.rawValue || passwordField.count < NumberMaxMin.maxNumber.rawValue  else
+        { return
             errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.passwordLongError.rawValue)
         }
     }
     
     //檢查密碼是否包含帳號
     func checkEqualUserNameAndRepassword(userNameFieldText: String, passwordFieldText: String) {
-        if passwordFieldText.contains(userNameFieldText) {
+        guard passwordFieldText.contains(userNameFieldText) == false else { return
             errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.equalUserName.rawValue)
         }
         
@@ -49,7 +50,7 @@ class CheckPasswordViewController: UIViewController, UITextFieldDelegate {
     //檢查密碼是否包含常見密碼
     func checkInTenMostCommonPasswords(passwordFieldText: String) {
         for i in 0...tenMostCommonPasswords.count - 1 {
-            if passwordFieldText.contains(tenMostCommonPasswords[i]) {
+            guard passwordFieldText.contains(tenMostCommonPasswords[i]) == false else { return
                 errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.inTenMostCommonPasswords.rawValue)
             }
         }
@@ -111,8 +112,7 @@ class CheckPasswordViewController: UIViewController, UITextFieldDelegate {
     
     //檢查密碼與重複輸入密碼是否一致
     func checkPasswordEqualRePassword(passwordFieldText: String, rePasswordFieldText: String) {
-        if passwordFieldText == rePasswordFieldText {
-        } else {
+        guard passwordFieldText == rePasswordFieldText else {  return
             errorArlt(title: SystemMsgTitle.errorMsgTitle.rawValue, errorMsg: ErrorMsg.passwordEqualRepassword.rawValue)
         }
     }
